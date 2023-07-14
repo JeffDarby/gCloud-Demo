@@ -37,7 +37,7 @@
 //   Genesys("command", "Launcher.show");
 //   // You can replace the alert with your desired script logic
 // }
-    }
+    };
       </script>
 	</head>
 	<body class="homepage is-preload">
@@ -244,9 +244,9 @@
         }
         );
 </script>
-<script>Genesys("subscribe", "Engage.inviteRejected", ({data})=>{
+<!-- <script>Genesys("subscribe", "Engage.inviteRejected", ({data})=>{
   Genesys("command", "Launcher.hide");
-});</script>
+});</script> -->
 <script>var launcherVisibility = false;
 
   Genesys("subscribe", "Launcher.visible", function() {
