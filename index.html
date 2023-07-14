@@ -24,6 +24,17 @@
         deploymentId: 'feee99bc-8de8-41f4-b0d4-d977d74e04e8'
       });
     </script>
+      <script>
+        function popEngage() {
+          // Place your script code here
+          Genesys("command", "Engage.invite", {
+  engageContent: {
+    offerText: "Hi there! Welcome to G-Summit 2023"
+  }
+});
+          // You can replace the alert with your desired script logic
+        }
+      </script>
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -33,7 +44,7 @@
 					<div id="header" class="container">
 
 						<!-- Logo -->
-							<h1 id="logo"><a href="index.html">Telephasic</a></h1>
+							<h1 id="logo"><a href="index.html">Genesys Predictive Engagement</a></h1>
 
 						<!-- Nav -->
 							<nav id="nav">
