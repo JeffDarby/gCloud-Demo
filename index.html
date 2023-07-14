@@ -239,25 +239,34 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			   <script>Genesys("subscribe", "Messenger.ready", function () {
-          Genesys("command", "Journey.formsTrack", { captureFormDataOnAbandon: true })
+			   <script>Genesys("subscribe", "Messenger.ready", function () {var launcherVisibility = false;
+          Genesys("command", "Journey.formsTrack", { captureFormDataOnAbandon: true });
+          Genesys("subscribe", "Launcher.visible", function() {
+    launcherVisibility = true;
+    // Additional logic to handle when the launcher becomes visible
+  });
+  Genesys("subscribe", "Launcher.hidden", function() {
+    launcherVisibility = false;
+    // Additional logic to handle when the launcher becomes hidden
+  });
+
         }
         );
 </script>
 <!-- <script>Genesys("subscribe", "Engage.inviteRejected", ({data})=>{
   Genesys("command", "Launcher.hide");
 });</script> -->
-<script>var launcherVisibility = false;
+<script>
 
-  Genesys("subscribe", "Launcher.visible", function() {
-    launcherVisibility = true;
-    // Additional logic to handle when the launcher becomes visible
-  });
+  // Genesys("subscribe", "Launcher.visible", function() {
+  //   launcherVisibility = true;
+  //   // Additional logic to handle when the launcher becomes visible
+  // });
   
-  Genesys("subscribe", "Launcher.hidden", function() {
-    launcherVisibility = false;
-    // Additional logic to handle when the launcher becomes hidden
-  });</script>
+  // Genesys("subscribe", "Launcher.hidden", function() {
+  //   launcherVisibility = false;
+  //   // Additional logic to handle when the launcher becomes hidden
+  // });</script>
 
 	</body>
 </html>
