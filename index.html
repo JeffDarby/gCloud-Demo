@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Telephasic by HTML5 UP</title>
+		<title>G-Summit 2023</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -26,12 +26,13 @@
     </script>
       <script>
         function popEngage() {
-          // Place your script code here
-          Genesys("command", "Engage.invite", {
-  engageContent: {
-    offerText: "Hi there! Welcome to G-Summit 2023"
-  }
-});
+            // Place your script code here
+            Genesys("command", "Engage.invite", {
+              engageContent: {
+                offerText: "Hi there! Welcome to G-Summit 2023"
+              }
+            }), Genesys("command", "Launcher.show");
+            ;
           // You can replace the alert with your desired script logic
         }
       </script>
