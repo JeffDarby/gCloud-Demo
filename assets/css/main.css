@@ -2132,18 +2132,20 @@ input, select, textarea {
 
 /* Header */
 
-	#logo {
-		position: absolute;
-		z-index: 1;
-		top: 0;
-		left: 50%;
-		width: 15em;
-		margin-left: -7.5em;
-	}
+#logo {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 50%;
+	width: 15em;
+	margin-left: -7.5em;
+	height: 2em;
+	/* Adjust the height as desired */
+}
 
 		#logo a {
 			display: block;
-			width: 100%;
+			width: 150%;
 			height: 4em;
 			line-height: 4em;
 			background: rgba(255, 255, 255, 0.15);
@@ -2158,6 +2160,8 @@ input, select, textarea {
 			letter-spacing: 3px;
 			text-align: center;
 			text-transform: uppercase;
+			margin-left: -25%; /* Adjust the negative margin to half of the width increase (e.g., -50% / 2) */
+			margin-right: -25%;
 		}
 
 	#nav {
@@ -2209,7 +2213,7 @@ input, select, textarea {
 				}
 
 				#nav > ul > li.break {
-					margin-left: 20em;
+					margin-left: 30em;
 				}
 
 	.dropotron {
