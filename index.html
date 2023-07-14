@@ -213,6 +213,9 @@
                   <label for="name">Name:</label>
                   <input type="text" id="name" name="name" required>
                   <br>
+                  <label for="phonenumber">Phone Number:</label>
+                  <input type="text" id="Phone Number" name="phonenumber" required>
+                  <br>
                 
                   <label for="email">Email:</label>
                   <input type="email" id="email" name="email" required>
@@ -247,14 +250,14 @@
 							<section class="col-6 col-12-narrower">
 								<div class="row gtr-0">
 									<ul class="divided icons col-6 col-12-mobile">
-										<li class="icon brands fa-twitter"><a href="#"><span class="extra">twitter.com/</span>untitled</a></li>
-										<li class="icon brands fa-facebook-f"><a href="#"><span class="extra">facebook.com/</span>untitled</a></li>
-										<li class="icon brands fa-dribbble"><a href="#"><span class="extra">dribbble.com/</span>untitled</a></li>
+										<li class="icon brands fa-twitter"><a href="https://twitter.com/Genesys"><span class="extra">twitter.com/</span>genesys</a></li>
+										<li class="icon brands fa-facebook-f"><a href="#"><span class="extra">facebook.com/</span>genesys</a></li>
+										<li class="icon brands fa-dribbble"><a href="#"><span class="extra">dribbble.com/</span>genesys</a></li>
 									</ul>
 									<ul class="divided icons col-6 col-12-mobile">
-										<li class="icon brands fa-instagram"><a href="#"><span class="extra">instagram.com/</span>untitled</a></li>
-										<li class="icon brands fa-youtube"><a href="#"><span class="extra">youtube.com/</span>untitled</a></li>
-										<li class="icon brands fa-pinterest"><a href="#"><span class="extra">pinterest.com/</span>untitled</a></li>
+										<li class="icon brands fa-instagram"><a href="#"><span class="extra">instagram.com/</span>genesys</a></li>
+										<li class="icon brands fa-youtube"><a href="#"><span class="extra">youtube.com/</span>genesys</a></li>
+										<li class="icon brands fa-pinterest"><a href="#"><span class="extra">pinterest.com/</span>genesys</a></li>
 									</ul>
 								</div>
 							</section>
@@ -277,7 +280,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			   <script>Genesys("subscribe", "Messenger.ready", function () {
-          Genesys("command", "Journey.formsTrack", { formName: "details_form", captureFormDataOnAbandon: false, traitsMapper:[{fieldName:"name", traitName:"givenName"}] });
+          Genesys("command", "Journey.formsTrack", { formName: "details_form", captureFormDataOnAbandon: false, traitsMapper:[{fieldName:"name", traitName:"givenName"},{fieldName:"phonenumber", traitName:"cellPhone"}] });
           Genesys("subscribe", "Launcher.visible", function() {
     launcherVisibility = true;
     // Additional logic to handle when the launcher becomes visible
