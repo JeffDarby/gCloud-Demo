@@ -25,16 +25,17 @@
       });
     </script>
       <script>
-        function popEngage() {
-            // Place your script code here
-            Genesys("command", "Engage.invite", {
-              engageContent: {
-                offerText: "Hi there! Welcome to G-Summit 2023"
-              }
-            }), Genesys("command", "Launcher.show");
-            ;
-          // You can replace the alert with your desired script logic
+  function popEngage() {
+      // Place your script code here
+      Genesys("command", "Engage.invite", {
+        engageContent: {
+          offerText: "Hi there! Welcome to G-Summit 2023"
         }
+      });
+
+      Genesys("command", "Launcher.show");
+      // You can replace the alert with your desired script logic
+    }
       </script>
 	</head>
 	<body class="homepage is-preload">
