@@ -33,8 +33,10 @@
         }
       });
 
-      Genesys("command", "Launcher.show");
-      // You can replace the alert with your desired script logic
+      if (launcherVisibility === false) {
+  Genesys("command", "Launcher.show");
+  // You can replace the alert with your desired script logic
+}
     }
       </script>
 	</head>
@@ -245,6 +247,17 @@
 <script>Genesys("subscribe", "Engage.inviteRejected", ({data})=>{
   Genesys("command", "Launcher.hide");
 });</script>
+<script>var launcherVisibility = false;
+
+  Genesys("subscribe", "Launcher.visible", function() {
+    launcherVisibility = true;
+    // Additional logic to handle when the launcher becomes visible
+  });
+  
+  Genesys("subscribe", "Launcher.hidden", function() {
+    launcherVisibility = false;
+    // Additional logic to handle when the launcher becomes hidden
+  });</script>
 
 	</body>
 </html>
