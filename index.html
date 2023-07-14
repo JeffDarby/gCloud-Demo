@@ -290,7 +290,9 @@
     // Additional logic to handle when the launcher becomes hidden
   });
 
-        }
+  Genesys("command", "Journey.trackScrollDepth", {
+  scrollDepthEvents: [{ percentage: 50, eventName: "scrolled_50_percent" }]
+}); }
         );
 </script>
 <script>Genesys("subscribe", "Engage.inviteRejected", ({data})=>{
