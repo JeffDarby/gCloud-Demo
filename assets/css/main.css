@@ -2283,7 +2283,7 @@ input, select, textarea {
 		position: relative;
 		color: #fff;
 		text-align: center;
-		z-index: 1;
+		z-index: 0.52;
 	}
 
 		#hero h2 {
@@ -2426,7 +2426,7 @@ input, select, textarea {
 			#header-wrapper {
 				padding: 2em 0 2em 0;
 			}
-
+			
 			.homepage #header-wrapper {
 				padding: 8em 0 4em 0;
 			}
