@@ -66,11 +66,12 @@
 			var input = {
 				email: "jeff.darby@genesys.com",
 				phone: "0416833069",
-				firstName: "Jeff",
+				firstName: "Jeff", 
 				lastName: "Darby"
 			}
 
 			Genesys("command", "Journey.record", {
+				eventName: "identify",
 				traitsMapper: [{fieldName: "email", traitName: "email"}, {fieldName: "firstName", traitName: "givenName"}, 
 				{fieldName: "phone", traitName: "cellPhone"}, {fieldName: "familyName", traitName: "familyName"}]
 			})
