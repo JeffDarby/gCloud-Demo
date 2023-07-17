@@ -326,9 +326,13 @@
 <script>Genesys("subscribe", "Engage.inviteRejected", ({data})=>{
   Genesys("command", "Launcher.hide");
 });</script>
-<script>Genesys("command", "Journey.trackInViewport", {
-	inViewportEvents: [{ selector: "#magic", eventName: "GPE_InView" }]
-  });</script>
+<script>
+	setTimeout(function() {
+	  Genesys("command", "Journey.trackInViewport", {
+		inViewportEvents: [{ selector: "#magic", eventName: "GPE_InView" }]
+	  });
+	}, 5000);
+  </script>
 <script>
 
   // Genesys("subscribe", "Launcher.visible", function() {
