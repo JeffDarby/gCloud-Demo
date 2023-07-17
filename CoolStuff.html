@@ -67,14 +67,12 @@
 				email: "jeff.darby@genesys.com",
 				phone: "0416833069",
 				firstName: "Jeff",
-				lastName: "Darby",
-				company: "Genesys"
-
+				lastName: "Darby"
 			}
 
 			Genesys("command", "Journey.record", {
 				traitsMapper: [{fieldName: "email", traitName: "email"}, {fieldName: "firstName", traitName: "givenName"}, 
-				{fieldName: "phone", traitName: "phone"}, {fieldName: "company", traitName: "company"}, {fieldName: "familyName", traitName: "familyName"}]
+				{fieldName: "phone", traitName: "cellPhone"}, {fieldName: "familyName", traitName: "familyName"}]
 			})
 		}
 		</script>
