@@ -62,23 +62,23 @@
     };
       </script>
 	  <script type="text/javascript">
-		function identify(){
-			Genesys("command", "Journey.record", {
+		function identify() {
+				Genesys("command", "Journey.record", {
 
-eventName: "identify",
+					eventName: "identify",
 
-customAttributes: {"firstName": "Jeff","email": "Jeff.Darby@genesys.com", "familyName": "Darby", "phone": "0416833069"},
+					customAttributes: { "firstName": "Jeff", "email": "Jeff.Darby@genesys.com", "familyName": "Darby", "phone": "0416833069" },
 
-traitsMapper: [{fieldName: "email", traitName: "email"}, {fieldName: "firstName", traitName: "givenName"}, {fieldName:"familyName", traitName:"familyName"},{fieldName: "phone", traitName: "cellPhone"}]
+					traitsMapper: [{ fieldName: "email", traitName: "email" }, { fieldName: "firstName", traitName: "givenName" }, { fieldName: "familyName", traitName: "familyName" }, { fieldName: "phone", traitName: "cellPhone" }]
 
-});
-		};
+				});
+			};
 		</script>
 		<script type="text/javascript">
-		function pageView(){
-			Genesys("command", "Journey.record", {
+			function pageView() {
+				Genesys("command", "Journey.record", {
 
-});
+				});
 
 
 
