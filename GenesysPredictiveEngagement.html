@@ -311,7 +311,7 @@
           Genesys("subscribe", "Launcher.visible", function() {
     launcherVisibility = true;
     // write a function for if launcher visibility == true, then hide the launcher
-	if(launcherVisibility === true) {Genesys("command", "Launcher.hide"), Genesys("command", "MessagingService.clearSession");   };
+	if(launcherVisibility === true) {Genesys("command", "Launcher.hide"), Genesys("command", "MessagingService.clearSession"); Genesys("command", "Messenger.close");  };
   });
   Genesys("subscribe", "Launcher.hidden", function() {
     launcherVisibility = false;
