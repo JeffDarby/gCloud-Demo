@@ -62,7 +62,16 @@
     };
       </script>
 	  <script type="text/javascript">
-		function clicky() {("command", "Journey.record",{eventName: "Clicked the button"})};
+		function clicky() {
+				Genesys("command", "Journey.record", {
+					eventName: "product_added", customAttributes: {
+						price: 15.99,
+						code: "CDE-123",
+						name: "Product",
+						hasBatteries: false
+					}
+				});
+			}
 		function identify() {
 				Genesys("command", "Journey.record", {
 
