@@ -12,7 +12,27 @@
     ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genesys Cloud Testing</title>
-        <script type="text/javascript" charset="utf-8">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Genesys Cloud Messaging Test page</h1>
+    </header>
+    <nav>
+        <!-- Navigation links go here -->
+    </nav>
+    <main>
+        <select id="deploymentPicker">
+            <option value="3baf8b66-380f-48b1-87b5-628c852cda3a">Budget Direct (Default)</option>
+            <option value="deployment-id-2">Option 2</option>
+            <option value="deployment-id-3">Option 3</option>
+        </select>
+        <button onclick="applyChanges()">Apply Changes</button>
+    </main>
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+
+    <script type="text/javascript" charset="utf-8">
         // Load Genesys with default or stored deploymentId
         function loadGenesysScript(deploymentId) {
             (function (g, e, n, es, ys) {
@@ -32,54 +52,16 @@
                 deploymentId: deploymentId
             });
         }
-        </script>
-</head>
-<body>
-    <header>
-        <h1>Welcome to the Genesys Cloud Messaging Test page</h1>
-    </header>
-    <nav>
-        <!-- Navigation links go here -->
-    </nav>
-    <main>
-        <select id="deploymentPicker">
-            <option value="3baf8b66-380f-48b1-87b5-628c852cda3a">Budget Direct (Default)</option>
-            <option value="da42e5a4-9e09-4933-9d3e-b646832d2e8e">ING</option>
-            <option value="deployment-id-3">Option 3</option>
-        </select>
-        <button onclick="changeDeploymentId()">Apply Changes</button>
-    </main>
-    <footer>
-        <!-- Footer content goes here -->
-    </footer>
 
-    <script type="text/javascript" charset="utf-8">
-        // Load Genesys with default or stored deploymentId
-        // function loadGenesysScript(deploymentId) {
-        //     (function (g, e, n, es, ys) {
-        //         g['_genesysJs'] = e;
-        //         g[e] = g[e] || function () {
-        //             (g[e].q = g[e].q || []).push(arguments);
-        //         };
-        //         g[e].t = 1 * new Date();
-        //         g[e].c = es;
-        //         ys = document.createElement('script');
-        //         ys.async = 1;
-        //         ys.src = n;
-        //         ys.charset = 'utf-8';
-        //         document.head.appendChild(ys);
-        //     })(window, 'Genesys', 'https://apps.mypurecloud.com.au/genesys-bootstrap/genesys.min.js', {
-        //         environment: 'prod-apse2',
-        //         deploymentId: deploymentId
-        //     });
-        // }
-
-        // Change the deploymentId based on selection
-        function changeDeploymentId() {
+        // Apply changes and optionally clear cache
+        function applyChanges() {
             const deploymentPicker = document.getElementById('deploymentPicker');
             const selectedDeploymentId = deploymentPicker.value;
             localStorage.setItem('selectedDeploymentId', selectedDeploymentId);
-            loadGenesysScript(selectedDeploymentId);
+            
+            // Clear local storage and reset the page to force reconfiguration
+            localStorage.clear();
+            window.location.reload(true); // Force reload from server, not cache
         }
 
         // Load initial deployment ID or set to default on page load
