@@ -29,6 +29,22 @@
           deploymentId: '3baf8b66-380f-48b1-87b5-628c852cda3a'
         });
       </script>
+<script type="text/javascript" charset="utf-8">
+    function changeDeploymentId() {
+        // Get the selected deployment ID
+        const deploymentPicker = document.getElementById('deploymentPicker');
+        const selectedDeploymentId = deploymentPicker.value;
+
+        // Update the Genesys configuration
+        Genesys('config', {
+            environment: 'prod-apse2',
+            deploymentId: selectedDeploymentId
+        });
+
+        // Optional: Reload page to refresh the configuration (if needed)
+        // window.location.reload(true);
+    }
+</script>
     <title>Genesys Cloud Testing</title>
 </head>
 <body>
@@ -39,7 +55,12 @@
         <!-- Navigation links go here -->
     </nav>
     <main>
-        
+        <select id="deploymentPicker">
+            <option value="3baf8b66-380f-48b1-87b5-628c852cda3a">Budget Direct (Default)</option>
+            <option value="da42e5a4-9e09-4933-9d3e-b646832d2e8e">ING</option>
+            <option value="deployment-id-3">Option 3</option>
+        </select>
+        <button onclick="changeDeploymentId()">Apply Changes</button>
     </main>
     <footer>
 
