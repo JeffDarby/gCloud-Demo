@@ -21,11 +21,12 @@
                     deploymentId: deploymentId
                 });
             } else {
-                console.error("Genesys function not loaded.");
+                console.error("Genesys function not loaded yet. Trying again...");
+                setTimeout(() => updateGenesysConfig(deploymentId), 100); // Retry after a short delay
             }
         }
 
-        // Function to change the deployment ID
+        // Function to change the deployment ID and save it
         function changeDeploymentId() {
             const deploymentPicker = document.getElementById('deploymentPicker');
             const selectedDeploymentId = deploymentPicker.value;
@@ -35,22 +36,19 @@
 
             // Save the deployment ID to local storage
             localStorage.setItem('selectedDeploymentId', selectedDeploymentId);
-
-            // Optional: Reload page to refresh the configuration (if needed)
-            // window.location.reload(true);
         }
 
-        // Load the deployment ID on page load
+        // Load the deployment ID on page load or set to default
         window.onload = function() {
-            const storedDeploymentId = localStorage.getItem('selectedDeploymentId');
             const deploymentPicker = document.getElementById('deploymentPicker');
+            const storedDeploymentId = localStorage.getItem('selectedDeploymentId');
 
-            if (storedDeploymentId) {
-                deploymentPicker.value = storedDeploymentId;
-            }
+            // Check if a stored ID exists, otherwise use the default from the first option in the select
+            const defaultDeploymentId = storedDeploymentId || deploymentPicker.options[0].value;
+            deploymentPicker.value = defaultDeploymentId;
 
-            // Apply the Genesys configuration with the stored or default ID
-            updateGenesysConfig(deploymentPicker.value);
+            // Apply the Genesys configuration
+            updateGenesysConfig(defaultDeploymentId);
         };
     </script>
 </head>
@@ -64,7 +62,7 @@
     <main>
         <select id="deploymentPicker">
             <option value="3baf8b66-380f-48b1-87b5-628c852cda3a">Budget Direct (Default)</option>
-            <option value="da42e5a4-9e09-4933-9d3e-b646832d2e8e">ING</option>
+            <option value="deployment-id-2">Option 2</option>
             <option value="deployment-id-3">Option 3</option>
         </select>
         <button onclick="changeDeploymentId()">Apply Changes</button>
