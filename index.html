@@ -12,45 +12,6 @@
     ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genesys Cloud Testing</title>
-    <script type="text/javascript" charset="utf-8">
-        // Helper function to update Genesys configuration
-        function updateGenesysConfig(deploymentId) {
-            if (typeof Genesys === "function") {
-                Genesys('config', {
-                    environment: 'prod-apse2',
-                    deploymentId: deploymentId
-                });
-            } else {
-                console.error("Genesys function not loaded yet. Trying again...");
-                setTimeout(() => updateGenesysConfig(deploymentId), 100); // Retry after a short delay
-            }
-        }
-
-        // Function to change the deployment ID and save it
-        function changeDeploymentId() {
-            const deploymentPicker = document.getElementById('deploymentPicker');
-            const selectedDeploymentId = deploymentPicker.value;
-
-            // Update Genesys configuration
-            updateGenesysConfig(selectedDeploymentId);
-
-            // Save the deployment ID to local storage
-            localStorage.setItem('selectedDeploymentId', selectedDeploymentId);
-        }
-
-        // Load the deployment ID on page load or set to default
-        window.onload = function() {
-            const deploymentPicker = document.getElementById('deploymentPicker');
-            const storedDeploymentId = localStorage.getItem('selectedDeploymentId');
-
-            // Check if a stored ID exists, otherwise use the default from the first option in the select
-            const defaultDeploymentId = storedDeploymentId || deploymentPicker.options[0].value;
-            deploymentPicker.value = defaultDeploymentId;
-
-            // Apply the Genesys configuration
-            updateGenesysConfig(defaultDeploymentId);
-        };
-    </script>
 </head>
 <body>
     <header>
@@ -70,5 +31,43 @@
     <footer>
         <!-- Footer content goes here -->
     </footer>
+
+    <script type="text/javascript" charset="utf-8">
+        // Load Genesys with default or stored deploymentId
+        function loadGenesysScript(deploymentId) {
+            (function (g, e, n, es, ys) {
+                g['_genesysJs'] = e;
+                g[e] = g[e] || function () {
+                    (g[e].q = g[e].q || []).push(arguments);
+                };
+                g[e].t = 1 * new Date();
+                g[e].c = es;
+                ys = document.createElement('script');
+                ys.async = 1;
+                ys.src = n;
+                ys.charset = 'utf-8';
+                document.head.appendChild(ys);
+            })(window, 'Genesys', 'https://apps.mypurecloud.com.au/genesys-bootstrap/genesys.min.js', {
+                environment: 'prod-apse2',
+                deploymentId: deploymentId
+            });
+        }
+
+        // Change the deploymentId based on selection
+        function changeDeploymentId() {
+            const deploymentPicker = document.getElementById('deploymentPicker');
+            const selectedDeploymentId = deploymentPicker.value;
+            localStorage.setItem('selectedDeploymentId', selectedDeploymentId);
+            loadGenesysScript(selectedDeploymentId);
+        }
+
+        // Load initial deployment ID or set to default on page load
+        window.onload = function() {
+            const deploymentPicker = document.getElementById('deploymentPicker');
+            const storedDeploymentId = localStorage.getItem('selectedDeploymentId') || '3baf8b66-380f-48b1-87b5-628c852cda3a';
+            deploymentPicker.value = storedDeploymentId;
+            loadGenesysScript(storedDeploymentId);
+        };
+    </script>
 </body>
 </html>
