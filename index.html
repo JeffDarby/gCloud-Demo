@@ -30,8 +30,8 @@
         });
       </script>
 <script type="text/javascript" charset="utf-8">
+ // Function to update the deployment ID
     function changeDeploymentId() {
-        // Get the selected deployment ID
         const deploymentPicker = document.getElementById('deploymentPicker');
         const selectedDeploymentId = deploymentPicker.value;
 
@@ -41,9 +41,23 @@
             deploymentId: selectedDeploymentId
         });
 
-        // Optional: Reload page to refresh the configuration (if needed)
-        window.location.reload(true);
+        // Save the deployment ID to local storage
+        localStorage.setItem('selectedDeploymentId', selectedDeploymentId);
     }
+
+    // Function to load the deployment ID when the page loads
+    window.onload = function() {
+        const storedDeploymentId = localStorage.getItem('selectedDeploymentId');
+        if (storedDeploymentId) {
+            document.getElementById('deploymentPicker').value = storedDeploymentId;
+
+            // Update the Genesys configuration with the stored ID
+            Genesys('config', {
+                environment: 'prod-apse2',
+                deploymentId: storedDeploymentId
+            });
+        }
+    };
 </script>
     <title>Genesys Cloud Testing</title>
 </head>
