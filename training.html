@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://apps.mypurecloud.com.au;
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' https://apps.mypurecloud.com.au;
+        connect-src 'self' https://api-cdn.mypurecloud.com.au https://api.mypurecloud.com.au wss://webmessaging.mypurecloud.com.au;
+        frame-src 'self' https://apps.mypurecloud.com.au;
+    ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genesys Cloud Testing</title>
+        <script type="text/javascript" charset="utf-8">
+        // Load Genesys with default or stored deploymentId
+        function loadGenesysScript(deploymentId) {
+            (function (g, e, n, es, ys) {
+                g['_genesysJs'] = e;
+                g[e] = g[e] || function () {
+                    (g[e].q = g[e].q || []).push(arguments);
+                };
+                g[e].t = 1 * new Date();
+                g[e].c = es;
+                ys = document.createElement('script');
+                ys.async = 1;
+                ys.src = n;
+                ys.charset = 'utf-8';
+                document.head.appendChild(ys);
+            })(window, 'Genesys', 'https://apps.mypurecloud.com.au/genesys-bootstrap/genesys.min.js', {
+                environment: 'prod-apse2',
+                deploymentId: deploymentId
+            });
+        }
+        </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Genesys Cloud Messaging Test page</h1>
+    </header>
+    <nav>
+        <!-- Navigation links go here -->
+    </nav>
+    <main>
+        <select id="deploymentPicker">
+            <option value="30e889e3-c65a-49b7-8a2e-69c09e6afa78">Testing</option>
+        </select>
+        <button onclick="changeDeploymentId()">Apply Changes</button>
+        <p>Please Refresh after applying changes to load the new brand.</p>
+    </main>
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+
+    <script type="text/javascript" charset="utf-8">
+        // Load Genesys with default or stored deploymentId
+        // function loadGenesysScript(deploymentId) {
+        //     (function (g, e, n, es, ys) {
+        //         g['_genesysJs'] = e;
+        //         g[e] = g[e] || function () {
+        //             (g[e].q = g[e].q || []).push(arguments);
+        //         };
+        //         g[e].t = 1 * new Date();
+        //         g[e].c = es;
+        //         ys = document.createElement('script');
+        //         ys.async = 1;
+        //         ys.src = n;
+        //         ys.charset = 'utf-8';
+        //         document.head.appendChild(ys);
+        //     })(window, 'Genesys', 'https://apps.mypurecloud.com.au/genesys-bootstrap/genesys.min.js', {
+        //         environment: 'prod-apse2',
+        //         deploymentId: deploymentId
+        //     });
+        // }
+
+        // Change the deploymentId based on selection
+        function changeDeploymentId() {
+            const deploymentPicker = document.getElementById('deploymentPicker');
+            const selectedDeploymentId = deploymentPicker.value;
+            localStorage.setItem('selectedDeploymentId', selectedDeploymentId);
+            loadGenesysScript(selectedDeploymentId);
+        }
+
+        // Load initial deployment ID or set to default on page load
+        window.onload = function() {
+            const deploymentPicker = document.getElementById('deploymentPicker');
+            const storedDeploymentId = localStorage.getItem('selectedDeploymentId') || '0e889e3-c65a-49b7-8a2e-69c09e6afa78';
+            deploymentPicker.value = storedDeploymentId;
+            loadGenesysScript(storedDeploymentId);
+        };
+    </script>
+</body>
+</html>
