@@ -12,27 +12,20 @@
     ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genesys Cloud Testing</title>
-        <script type="text/javascript" charset="utf-8">
-        // Load Genesys with default or stored deploymentId
-        function loadGenesysScript(deploymentId) {
-            (function (g, e, n, es, ys) {
-                g['_genesysJs'] = e;
-                g[e] = g[e] || function () {
-                    (g[e].q = g[e].q || []).push(arguments);
-                };
-                g[e].t = 1 * new Date();
-                g[e].c = es;
-                ys = document.createElement('script');
-                ys.async = 1;
-                ys.src = n;
-                ys.charset = 'utf-8';
-                document.head.appendChild(ys);
-            })(window, 'Genesys', 'https://apps.mypurecloud.com.au/genesys-bootstrap/genesys.min.js', {
-                environment: 'prod-apse2',
-                deploymentId: deploymentId
-            });
-        }
-        </script>
+<script type="text/javascript" charset="utf-8">
+  (function (g, e, n, es, ys) {
+    g['_genesysJs'] = e;
+    g[e] = g[e] || function () {
+      (g[e].q = g[e].q || []).push(arguments)
+    };
+    g[e].t = 1 * new Date();
+    g[e].c = es;
+    ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8'; document.head.appendChild(ys);
+  })(window, 'Genesys', 'https://apps.mypurecloud.com.au/genesys-bootstrap/genesys.min.js', {
+    environment: 'prod-apse2',
+    deploymentId: '30e889e3-c65a-49b7-8a2e-69c09e6afa78'
+  });
+</script>
 </head>
 <body>
     <header>
@@ -42,11 +35,7 @@
         <!-- Navigation links go here -->
     </nav>
     <main>
-        <select id="deploymentPicker">
-            <option value="30e889e3-c65a-49b7-8a2e-69c09e6afa78">Training</option>
-        </select>
-        <button onclick="changeDeploymentId()">Apply Changes</button>
-        <p>Please Refresh after applying changes to load the new brand.</p>
+        
     </main>
     <footer>
         <!-- Footer content goes here -->
