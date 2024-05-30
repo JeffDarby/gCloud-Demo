@@ -48,6 +48,19 @@
         }
 
         document.getElementById('startMessenger').addEventListener('click', loadGenesysScript);
+        Genesys("subscribe", "Conversations.opened", function() {
+    Genesys("command", "MessagingService.fetchHistory", {}, 
+        function() {
+            // fulfilled callback
+            console.log("fulfilled");
+        }, 
+        function() {
+            // rejected callback
+            console.log("rejected");
+        }
+    );
+});
+
     </script>
 </body>
 </html>
